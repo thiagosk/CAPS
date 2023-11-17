@@ -9,6 +9,11 @@ class Tokenizer:
         self.source = source
         self.position = position
         self.next = Token(type(source), source)
+
+    def no_lower_cases(self, token):
+        if (type(token)==str) & (token.isdigit()==False):
+            if token.isupper()==False:
+                raise ValueError("!!!NO LOWER CASES!!!")
     
     def select_next(self):
         if self.position == len(self.source):
@@ -26,8 +31,10 @@ class Tokenizer:
                     self.position += 1
                     return 0
                 else:
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
 
             elif char == '"':
                 if size_of_token == 0:
@@ -40,8 +47,10 @@ class Tokenizer:
                     self.position += len(token_str)
                     return 0
                 else:
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 
             elif char == "P":
                 token_print = self.source[self.position:self.position+5]
@@ -58,8 +67,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_print == "PRINT") | (token_plus == "PLUS")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -84,8 +95,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_if == "IF") | (token_int == "INT") | (token_is == "IS")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -105,8 +118,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_else == "ELSE") | (token_equal == "EQUAL")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -121,8 +136,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_for == "FOR"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -137,8 +154,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_var == "VAR"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -158,8 +177,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_str == "STR") | (token_scan == "SCAN")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -179,8 +200,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_or == "OR") | (token_open == "OPEN")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -195,8 +218,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_and == "AND"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -211,8 +236,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_minus == "MINUS"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -227,8 +254,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_times == "TIMES"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -253,8 +282,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_div == "DIV") | (token_do == "DO") | (token_dot == "DOT")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -269,8 +300,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_close == "CLOSE"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -285,8 +318,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_less == "LESS"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -306,8 +341,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_greater == "GREATER") | (token_given == "GIVEN")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -322,8 +359,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_not == "NOT"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -338,8 +377,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & (token_join == "JOIN"):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -359,8 +400,10 @@ class Tokenizer:
                     token += char # keep building token
                     self.position += 1
                 elif (size_of_token != 0) & ((token_while == "WHILE") | (token_with == "WITH")):
+                    self.no_lower_cases(token.strip())
                     self.next = Token(type(token.strip()), token.strip()) # save int|str
                     return 0
+
                 else:
                     token += char # keep building token
                     self.position += 1
@@ -368,9 +411,11 @@ class Tokenizer:
             else:
                 token += char # keep building token
                 self.position += 1
-            
+
+        self.no_lower_cases(token.strip())
         self.next = Token(type(token.strip()), token.strip()) # save last int|str
         return 0
+
 
 
 class SymbolTable:
