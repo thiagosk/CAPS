@@ -97,3 +97,5 @@ OUTPUT
 **NUMBER** = DIGIT, { DIGIT } ;\
 **LETTER** = ( A | ... | Z ) ;\
 **DIGIT** = ( 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 ) ;
+
+![Alt text](images/meme.png)
